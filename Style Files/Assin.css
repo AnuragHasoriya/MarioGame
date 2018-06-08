@@ -1,0 +1,112 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+#main{
+    background-image: url("mario_back.jpg");  
+    max-height: 100vh; 
+    max-width: 100vw;
+    background-position: center;
+    /*background-size: cover;*/ 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    animation-name: backroll;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+    /*animation-timing-function: linear;*/
+    animation-delay: 1s;
+    
+}
+#restart{ 
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+  height: 40%;
+}
+
+#gameStart{
+  visibility: hidden;
+}
+
+
+/*@keyframes backroll{
+  from {left: 0px; top:0px;}
+  to {left: -100%; top: 0%; }
+}*/
+
+#death{
+  height: 35px;
+  width: 45px;
+  top: 665px;
+  left: 895px;
+  position: absolute;
+  z-index: 1;
+}
+
+#death2{
+  height: 35px;
+  width: 45px;
+  top: 665px;
+  left: 1120px;
+  position: absolute;
+  z-index: 1
+}
+
+#death3{
+  height: 35px;
+  width: 45px;
+  top: 665px;
+  left: 1175px;
+  position: absolute;
+  z-index: 1
+}
+
+#death4{
+  position: absolute;
+  height: 60px;
+  width: 60px;
+  top: 450px;
+  left: 300px;
+}
+
+#death5{
+  position: absolute;
+  height: 60px;
+  width: 60px;
+  top: 500px;
+  left: 600px;
+}
+
+#marioimg{
+  height: 50px;
+  width: 50px;
+  position: relative;
+  top: 650px;
+  left: 0;
+}
+
+#count{
+  position: absolute;
+  top: 60px;
+  left: 80%;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  color: #ffd633;
+  font-size: 30px;
+  height: 70px;
+}
+  
+#mushrom{
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  top: 528px;
+  left: 200px;
+}
+
