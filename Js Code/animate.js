@@ -1,147 +1,106 @@
-var objImage = null;
-var marioDim = null;
-var monster1 = null;
-var monster2 = null;
-var monster3 = null;
-var mariox = null;
-var marioy = null;
-var marioh = null;
-var mariow = null;
-var mariobase = null;
-var mariorend = null;
-var mon1x = null;
-var mon1y = null;
-var mon1h = null;
-var mon1w = null;
-var mon1base = null;
-var mon1rend = null;
-var mon2x = null;
-var mon2y = null;
-var mon2h = null;
-var mon2w = null;
-var mon2base = null;
-var mon2rend = null;
-var mon3x = null;
-var mon3y = null;
-var mon3h = null;
-var mon3w = null;
-var mon3base = null;
-var mon3rend = null;
-var count = null;
-var marioLife = null;
-var marioCount = null;
-var movMush = null;
-var mushx = null;
-var mushy = null;
-var mushh = null;
-var mushw = null;
-var mushbase = null;
-var mushrend = null;
-var stance = null;
-var bigsize = null;
-var bigx = null;
-var bigy = null;
-var bigh = null;
-var bigw = null;
-var bigrend = null;
-var bigbase = null;
-var base = null;
-var flag = null;
-var baseval = null;
-var basey = null;
-var baseh = null;
-var sizeup = null;
-var restartBanner = null;
-//var aud;
+var  myJson = '{ "marioDim" : "null", "monster1" : "null","monster2":"null","monster3":"null","mariox":"null","img":"null","marioy":"null","marioh":"null","mariow":"null","mariobase":"null","mariorend":"null","mon1x":"null","mon1y":"null","mon1h":"null","mon1w":"null","mon1base":"null","mon1rend":"null","mon2x":"null","mon2y":"null","mon2h":"null","mon2w":"null","mon2base":"null","mon2rend":"null","mon3x":"null","mon3y":"null","mon3h":"null","mon3w":"null","mon3base":"null","mon3rend":"null","count":"null","marioLife":"null","marioCount":"null","movMush":"null","mushx":"null","mushy":"null","mushh":"null","mushw":"null","mushbase":"null","mushrend":"null","stance":"null","bigsize":"null","bigx":"null","bigy":"null","bigh":"null","bigw":"null","bigrend":"null","bigbase":"null","base":"null","flag":"null","baseval":"null","basey":"null","baseh":"null","sizeup":"null","restartBanner":"null"}'
+var myVar = JSON.parse(myJson);
+
+function loadImage(idName){
+    myVar.img = document.createElement("img");
+    myVar.img.src = "Style Files/movemonster1.gif";
+    return document.getElementById(idName).appendChild(myVar.img);
+}
+
+function getElement(divId){
+    return document.getElementById(divId);
+}
 
 function init(){
-    sizeup = true;
-    count = 3;
-    stance = document.getElementById("img");
-    objImage = document.getElementById("marioimg");
-    marioDim = document.getElementById("marioimg");
-    baseval = document.getElementById("marioimg");
-    coinImg = document.getElementById("points");
-    marioLife = document.getElementById("life");
-    marioLife.innerHTML = "life :" + count;
+    myVar.sizeup = true;
+    myVar.count = 3;
+    myVar.stance = getElement("img");
+    myVar.objImage = getElement("marioimg");
+    myVar.marioDim = getElement("marioimg");
+    myVar.baseval = getElement("marioimg");
+    myVar.coinImg = getElement("points");
+    myVar.marioLife = getElement("life");
+    myVar.marioLife.innerHTML = "life :" + myVar.count;
 
-    monster1 = document.getElementById("death");
-    monster2 = document.getElementById("death2");
-    monster3 = document.getElementById("death3");
-    movMush = document.getElementById("death4");
-    bigsize = document.getElementById("mushrom");
-    restartBanner = document.getElementById("gameStart");
-
-    bigx = bigsize.offsetLeft;
-    bigy = bigsize.offsetTop;
-    bigh = bigsize.offsetHeight;
-    bigw = bigsize.offsetWidth;
-    bigbase = bigy + bigh;
-    bigrend = bigx + bigw;
-
-    mon1x = monster1.offsetLeft;
-    mon1y = monster1.offsetTop;
-    mon1h = monster1.offsetHeight;
-    mon1w = monster1.offsetWidth;
-    mon1base = mon1y + mon1h;
-    mon1rend = mon1x + mon1w;
-
-    mon2x = monster2.offsetLeft;
-    mon2y = monster2.offsetTop;
-    mon2h = monster2.offsetHeight;
-    mon2w = monster2.offsetWidth;
-    mon2base = mon2y + mon2h;
-    mon2rend = mon2x + mon2w;
+    myVar.monster1 = getElement("death");
+    myVar.monster2 = getElement("death2");
+    myVar.monster3 = getElement("death3"); 
+    myVar.movMush = getElement("death4");
+    myVar.bigsize = getElement("mushrom");
+    myVar.restartBanner = getElement("gameStart");
     
-    mon3x = monster3.offsetLeft;
-    mon3y = monster3.offsetTop;
-    mon3h = monster3.offsetHeight;
-    mon3w = monster3.offsetWidth;
-    mon3base = mon3y + mon3h;
-    mon3rend = mon3x + mon3w;
+    loadImage("death");
+    loadImage("death2");
+    loadImage("death3");
+    loadImage("death4");
 
-    objImage.style.position = "relative";
-    objImage.style.left = "0px";
-    objImage.style.top = "660px";
+    myVar.bigx = myVar.bigsize.offsetLeft;
+    myVar.bigy = myVar.bigsize.offsetTop;
+    myVar.bigh = myVar.bigsize.offsetHeight;
+    myVar.bigw = myVar.bigsize.offsetWidth;
+    myVar.bigbase = myVar.bigy + myVar.bigh;
+    myVar.bigrend = myVar.bigx + myVar.bigw;
 
-    movMush.style.left = "400px";
-    movMush.style.top = "450px";
+    myVar.mon1x = myVar.monster1.offsetLeft;
+    myVar.mon1y = myVar.monster1.offsetTop;
+    myVar.mon1h = myVar.monster1.offsetHeight;
+    myVar.mon1w = myVar.monster1.offsetWidth;
+    myVar.mon1base = myVar.mon1y + myVar.mon1h;
+    myVar.mon1rend = myVar.mon1x + myVar.mon1w;
+
+    myVar.mon2x = myVar.monster2.offsetLeft;
+    myVar.mon2y = myVar.monster2.offsetTop;
+    myVar.mon2h = myVar.monster2.offsetHeight;
+    myVar.mon2w = myVar.monster2.offsetWidth;
+    myVar.mon2base = myVar.mon2y + myVar.mon2h;
+    myVar.mon2rend = myVar.mon2x + myVar.mon2w;
+    
+    myVar.mon3x = myVar.monster3.offsetLeft;
+    myVar.mon3y = myVar.monster3.offsetTop;
+    myVar.mon3h = myVar.monster3.offsetHeight;
+    myVar.mon3w = myVar.monster3.offsetWidth;
+    myVar.mon3base = myVar.mon3y + myVar.mon3h;
+    myVar.mon3rend = myVar.mon3x + myVar.mon3w;
+
+    myVar.objImage.style.position = "relative";
+    myVar.objImage.style.left = "0px";
+    myVar.objImage.style.top = "660px";
+
+    myVar.movMush.style.left = "400px";
+    myVar.movMush.style.top = "450px";
     
     setValue();
-    basey = baseval.offsetTop;
-    baseh = baseval.offsetHeight;
-    base = screen.height - (basey + baseh);
+    myVar.basey = myVar.baseval.offsetTop;
+    myVar.baseh = myVar.baseval.offsetHeight;
+    myVar.base = screen.height - (myVar.basey + myVar.baseh);
     
-    //(function(){
-        var mov = parseInt(movMush.style.left.substring( 0, 3));
+    var mov = parseInt(myVar.movMush.style.left.substring( 0, 3));
         var movlimit = mov + 100;
         var idclose = setInterval(slide,100);
         function slide() {
             if(mov >=  movlimit){
                while(mov != 200){ 
-                    movMush.style.left=parseInt(movMush.style.left) - 2 + "px";
+                    myVar.movMush.style.left=parseInt(myVar.movMush.style.left) - 2 + "px";
                     mov = mov - 5;
                 }
             }
             else{
-                movMush.style.left=parseInt(movMush.style.left) + 2 + "px";
-                mov = parseInt(movMush.style.left.substring( 0, 3));
-                getMushMario();
+            myVar.movMush.style.left=parseInt(myVar.movMush.style.left) + 2 + "px";
+            mov = parseInt(myVar.movMush.style.left.substring( 0, 3));
+            getMushMario();
             }
-            setValue();
-            forthMon();
-        }     
-    // })();
-    //aud=document.getElementById("myAudio");
+        setValue();
+        forthMon();
+    }     
 }
 
 function getMushMario(){
-    mushx = movMush.offsetLeft;
-    mushy = movMush.offsetTop;
-    mushh = movMush.offsetHeight;
-    mushw = movMush.offsetWidth;
-    mushbase = mushy + mushh;
-    mushrend = mushx + mushw;
+    myVar.mushx = myVar.movMush.offsetLeft;
+    myVar.mushy = myVar.movMush.offsetTop;
+    myVar.mushh = myVar.movMush.offsetHeight;
+    myVar.mushw = myVar.movMush.offsetWidth;
+    myVar.mushbase = myVar.mushy + myVar.mushh;
+    myVar.mushrend = myVar.mushx + myVar.mushw;
 }
 
 function getKeyAndMove(event){    
@@ -157,10 +116,8 @@ function getKeyAndMove(event){
         case 38:
             getUp();
             break;
-        case 40 :
-        //if(mariobase < base ){
+        case 40:
             getDown();
-       // }
             break;
         default:
             alert("please enter correct key");
@@ -168,32 +125,49 @@ function getKeyAndMove(event){
 }
 
     function getRight(){
-        /*var pos=0;
-        var id1= setInterval(movie,1000);
-
-        function movie(){
-            if(pos == 53){
-                clearInterval(id1);
-            } 
-            else{
-                pos++;  
-                objImage.style.left =parseInt(objImage.style.left)+pos+"px";
-            }
-        }*/
-        //Style Files\mario.gif_c200
-        stance.src ="Style Files/movmario.gif_c200";
-        objImage.style.left = parseInt(objImage.style.left) + 5 +"px";
-        bigMario();
-        setValue();
-        firstMon();
-        secondMon();
-        thirdMon(); 
-        forthMon();      
+        myVar.stance.src ="Style Files/movmario.gif_c200";
+        myVar.objImage.style.left = parseInt(myVar.objImage.style.left) + 5 +"px";
+        checkPix();      
     }
 
-
     function getLeft(){
-        objImage.style.left = parseInt(objImage.style.left) - 5 + "px";
+        myVar.objImage.style.left = parseInt(myVar.objImage.style.left) - 5 + "px";
+        checkPix();
+    }
+
+    function getUp() {
+        myVar.stance.src ="Style Files/movmario.gif_c200";
+        var pos = parseInt(myVar.objImage.style.top.substring( 0, 3));
+        var poslimit = pos - 30;
+        var id1 = setInterval(bounce,50);
+        function bounce() {
+            if(pos <=  poslimit) {
+                clearInterval(id1);
+            }
+            else {
+                myVar.objImage.style.top = parseInt(myVar.objImage.style.top) - 5 + "px";
+                myVar.objImage.style.left = parseInt(myVar.objImage.style.left) + 2 + "px";
+                pos = pos - 5;
+                checkPix();
+            }
+        }       
+    }
+
+    function getDown() {
+        myVar.stance.src ="Style Files/mario.png";
+        var id1 = setInterval(fall,50);
+        function fall(){
+            if((screen.height - myVar.mariobase) <=  myVar.base){
+                clearInterval(id1);
+            }
+            else{
+            myVar.objImage.style.top = parseInt(myVar.objImage.style.top) + 5 + "px";
+            checkPix();
+            }
+        }
+    }
+
+    function checkPix(){
         bigMario();
         setValue();
         firstMon();
@@ -201,185 +175,129 @@ function getKeyAndMove(event){
         thirdMon();
         forthMon();
     }
-    function getUp() {
-        stance.src ="Style Files/movmario.gif_c200";
-        var pos = parseInt(objImage.style.top.substring( 0, 3));
-        var poslimit = pos - 30;
-        var id1 = setInterval(bounce,50);
-        function bounce() {
-            if(pos <=  poslimit) {
-                clearInterval(id1);
-               /* while(pos!=660){
-                objImage.style.top= parseInt(objImage.style.top) + 5 + "px";
-                objImage.style.left=parseInt(objImage.style.left) + 2 + "px";
-                pos= pos + 5;
-                }*/
-            }
-            else {
-                objImage.style.top = parseInt(objImage.style.top) - 5 + "px";
-                objImage.style.left = parseInt(objImage.style.left) + 2 + "px";
-                //var colli= parseInt(fireImg.style.top)+50;
-                /*if(colli<pos){
-                   alert("you are dead");
-                 }*/
-                pos = pos - 5;
-                bigMario();
-                setValue();
-                firstMon();
-                secondMon();
-                thirdMon();
-                forthMon();
-            }
-        }   
-        
-    }
-
-    function getDown() {
-        stance.src ="Style Files/mario.png";
-        var id1 = setInterval(fall,50);
-        function fall(){
-            if((screen.height - mariobase) <=  base){
-                clearInterval(id1);
-            }
-            else{
-            objImage.style.top = parseInt(objImage.style.top) + 5 + "px";
-            bigMario();
-            setValue();
-            firstMon();
-            secondMon();
-            thirdMon();
-            forthMon();
-            }
-        }
-    }
 
     function setValue(){
-        mariox = marioDim.offsetLeft;
-        marioy = marioDim.offsetTop;
-        marioh = marioDim.offsetHeight;
-        mariow = marioDim.offsetWidth;
-        mariobase = marioy + marioh;
-        mariorend = mariox + mariow;
+        myVar.mariox = myVar.marioDim.offsetLeft;
+        myVar.marioy = myVar.marioDim.offsetTop;
+        myVar.marioh = myVar.marioDim.offsetHeight;
+        myVar.mariow = myVar.marioDim.offsetWidth;
+        myVar.mariobase = myVar.marioy + myVar.marioh;
+        myVar.mariorend = myVar.mariox + myVar.mariow;
     }
 
     function bigMario(){
-        if(mariorend >= bigx && marioy < bigbase && mariorend <= bigrend && mariobase > bigy && sizeup == true){
-            objImage.style.height = 50 + 20 + "px";
-            objImage.style.width = 40 + 20 + "px";
-            bigsize.style.visibility = "hidden";
-            flag = 1;
-            sizeup = false;
+        if(myVar.mariorend >= myVar.bigx && myVar.marioy < myVar.bigbase && myVar.mariorend <= myVar.bigrend && myVar.mariobase > myVar.bigy && myVar.sizeup == true){
+            myVar.objImage.style.height = 50 + 20 + "px";
+            myVar.objImage.style.width = 40 + 20 + "px";
+            myVar.bigsize.style.visibility = "hidden";
+            myVar.flag = 1;
+            myVar.sizeup = false;
             setValue();
         }
     }
 
     function firstMon(){
-        if((mariorend >= mon1x && mariox <= mon1rend) && mariobase > mon1y){
+        if((myVar.mariorend >= myVar.mon1x && myVar.mariox <= myVar.mon1rend) && myVar.mariobase > myVar.mon1y){
             life();
         }  
-        else if((mariobase > mon1y && mariorend > mon1x) && mariox < mon1rend){
+        else if((myVar.mariobase > myVar.mon1y && myVar.mariorend > myVar.mon1x) && myVar.mariox < myVar.mon1rend){
             life();
         }  
     }
 
-
-   function secondMon(){
-        if ((mariorend >= mon2x && mariox <= mon2rend) && mariobase > mon2y){
+    function secondMon(){
+        if ((myVar.mariorend >= myVar.mon2x && myVar.mariox <= myVar.mon2rend) && myVar.mariobase > myVar.mon2y){
             life();  
         }
-        else if((mariobase > mon2y && mariorend > mon2x) && mariox < mon2rend){
+        else if((myVar.mariobase > myVar.mon2y && myVar.mariorend > myVar.mon2x) && myVar.mariox < myVar.mon2rend){
             life();
         } 
     }
 
     function thirdMon(){
-        if ((mariorend >= mon3x && mariox <= mon3rend) && mariobase > mon3y){
+        if ((myVar.mariorend >= myVar.mon3x && myVar.mariox <= myVar.mon3rend) && myVar.mariobase > myVar.mon3y){
         life();      
         }
-        else if((mariobase > mon3y && mariorend > mon3x) && mariox < mon3rend){
+        else if((myVar.mariobase > myVar.mon3y && myVar.mariorend > myVar.mon3x) && myVar.mariox < myVar.mon3rend){
             life();
         } 
     }
 
     function forthMon(){
-        if ((marioy  <= mushbase && mushrend >= mariox) && mariox > mushx && mariobase >= mushy ) {
+        if ((myVar.marioy  <= myVar.mushbase && myVar.mushrend >= myVar.mariox) && myVar.mariox > myVar.mushx && myVar.mariobase >= myVar.mushy ) {
         lifeUp();
         }
-        else if ((marioy < mushbase && mariorend >= mushx ) && mariorend < mushrend && mariobase >= mushy ){ 
+        else if ((myVar.marioy < myVar.mushbase && myVar.mariorend >= myVar.mushx ) && myVar.mariorend < myVar.mushrend && myVar.mariobase >= myVar.mushy ){ 
             lifeUp();
         }
-        else if (marioy < mushbase && mariox > mushx && mariorend < mushrend && mariobase >= mushy){
+        else if (myVar.marioy < myVar.mushbase && myVar.mariox > myVar.mushx && myVar.mariorend < myVar.mushrend && myVar.mariobase >= myVar.mushy){
             lifeUp();
         }
     }
 
     function life() {
-        if(flag == 1){
-            objImage.style.height = 70 - 20 + "px";
-            objImage.style.width = 60 - 20 + "px";
+        if(myVar.flag == 1){
+            myVar.objImage.style.height = 70 - 20 + "px";
+            myVar.objImage.style.width = 60 - 20 + "px";
             setValue();
-            //base = 710 - marioh;
-            objImage.style.top = "660px";
-            flag = 0;
+            myVar.objImage.style.top = "660px";
+            myVar.flag = 0;
         }
         else{
-            count --;
-            marioLife.innerHTML = "life :" + count;
-            if(count == 0){
+            myVar.count --;
+            myVar.marioLife.innerHTML = "life :" + myVar.count;
+            if(myVar.count == 0){
                 //prompt("do you want to restart");
                 reload();
            }
         }
-        objImage.style.left= parseInt(objImage.style.left) - 100 + "px";
+        myVar.objImage.style.left= parseInt(myVar.objImage.style.left) - 100 + "px";
         setValue();
     }
 
     function lifeUp(){ 
-        if(flag == 1){
-            objImage.style.height = 70 - 20 + "px";
-            objImage.style.width = 60 - 20 + "px";
+        if(myVar.flag == 1){
+            myVar.objImage.style.height = 70 - 20 + "px";
+            myVar.objImage.style.width = 60 - 20 + "px";
             setValue();
-            //base = 710 - marioh;
-            // objImage.style.top = "660px";
-            flag = 0;
+            myVar.flag = 0;
         }
         else{
-            count --;
-            marioLife.innerHTML = "life :" + count;
-            if(count == 0){
-            objImage.style.top= parseInt(objImage.style.top) + 100 + "px";
-            // prompt("do you want to restart");
+            myVar.count --;
+            myVar.marioLife.innerHTML = "life :" + myVar.count;
+            if(myVar.count == 0){
+            myVar.objImage.style.top= parseInt(myVar.objImage.style.top) + 100 + "px";
             reloadUp();
             }
         }
-        objImage.style.top= parseInt(objImage.style.top) + 60 + "px";
+        myVar.objImage.style.top= parseInt(myVar.objImage.style.top) + 60 + "px";
         setValue();
     }
 
     function reload(){
-        restartBanner.visibility = "visible";
-        objImage.style.position = "absolute";
-        objImage.style.left = "100px";
-        objImage.style.top = "660px";
-        restartBanner.style.visibility = "visible";
+        myVar.restartBanner.visibility = "visible";
+        myVar.objImage.style.position = "absolute";
+        myVar.objImage.style.left = "100px";
+        myVar.objImage.style.top = "660px";
+        myVar.restartBanner.style.visibility = "visible";
         setTimeout(reSet,3000);
     }
 
     function reloadUp(){
-        objImage.style.position = "absolute";
-        objImage.style.left = "60px";
-        objImage.style.top = "600px";
-        restartBanner.style.visibility = "visible";
+        myVar.objImage.style.position = "absolute";
+        myVar.objImage.style.left = "60px";
+        myVar.objImage.style.top = "600px";
+        myVar.restartBanner.style.visibility = "visible";
         setTimeout(reSet,3000);
     }
 
     function reSet(){
-        count=3;
-        marioLife.innerHTML = "life :" + count;
-        stance.src ="Style Files/mario.png";
-        bigsize.style.visibility = "visible";
-        sizeup = true;
-        restartBanner.style.visibility = "hidden";
+        myVar.count=3;
+        myVar.marioLife.innerHTML = "life :" + myVar.count;
+        myVar.stance.src ="Style Files/mario.png";
+        myVar.bigsize.style.visibility = "visible";
+        myVar.sizeup = true;
+        myVar.restartBanner.style.visibility = "hidden";
     }
 
     window.onload = init;

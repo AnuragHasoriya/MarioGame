@@ -41,47 +41,31 @@
   to {left: -100%; top: 0%; }
 }*/
 
-#death{
-  height: 35px;
-  width: 45px;
-  top: 665px;
-  left: 895px;
+.monster{
   position: absolute;
   z-index: 1;
+  height: 35px;
+  width: 45px;
+  
+}
+#death{
+  left: 895px;
+  top: 665px;
 }
 
 #death2{
-  height: 35px;
-  width: 45px;
   top: 665px;
   left: 1120px;
-  position: absolute;
-  z-index: 1
 }
 
 #death3{
-  height: 35px;
-  width: 45px;
   top: 665px;
-  left: 1175px;
-  position: absolute;
-  z-index: 1
+  left: 1175px;  
 }
 
 #death4{
-  position: absolute;
-  height: 60px;
-  width: 60px;
   top: 450px;
   left: 300px;
-}
-
-#death5{
-  position: absolute;
-  height: 60px;
-  width: 60px;
-  top: 500px;
-  left: 600px;
 }
 
 #marioimg{
