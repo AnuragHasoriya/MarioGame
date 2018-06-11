@@ -45,27 +45,7 @@
   position: absolute;
   z-index: 1;
   height: 35px;
-  width: 45px;
-  
-}
-#death{
-  left: 895px;
-  top: 665px;
-}
-
-#death2{
-  top: 665px;
-  left: 1120px;
-}
-
-#death3{
-  top: 665px;
-  left: 1175px;  
-}
-
-#death4{
-  top: 450px;
-  left: 300px;
+  width: 45px; 
 }
 
 #marioimg{

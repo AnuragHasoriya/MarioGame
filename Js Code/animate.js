@@ -34,6 +34,10 @@ function init(){
     loadImage("death3");
     loadImage("death4");
 
+    setPosition(myVar.monster1, "56%", "84%");
+    setPosition(myVar.monster2, "70%", "84%");
+    setPosition(myVar.monster3, "73%", "84%"); 
+
     myVar.bigx = myVar.bigsize.offsetLeft;
     myVar.bigy = myVar.bigsize.offsetTop;
     myVar.bigh = myVar.bigsize.offsetHeight;
@@ -41,57 +45,95 @@ function init(){
     myVar.bigbase = myVar.bigy + myVar.bigh;
     myVar.bigrend = myVar.bigx + myVar.bigw;
 
-    myVar.mon1x = myVar.monster1.offsetLeft;
-    myVar.mon1y = myVar.monster1.offsetTop;
-    myVar.mon1h = myVar.monster1.offsetHeight;
-    myVar.mon1w = myVar.monster1.offsetWidth;
-    myVar.mon1base = myVar.mon1y + myVar.mon1h;
-    myVar.mon1rend = myVar.mon1x + myVar.mon1w;
+    myVar.mon1x = getLeftof(myVar.monster1,);
+    myVar.mon1y = getTop(myVar.monster1);
+    myVar.mon1h = getHeight(myVar.monster1);
+    myVar.mon1w = getWidth(myVar.monster1);
+    myVar.mon1base = getBase(myVar.mon1y, myVar.mon1h);
+    myVar.mon1rend = getRend(myVar.mon1x, myVar.mon1w);
 
-    myVar.mon2x = myVar.monster2.offsetLeft;
-    myVar.mon2y = myVar.monster2.offsetTop;
-    myVar.mon2h = myVar.monster2.offsetHeight;
-    myVar.mon2w = myVar.monster2.offsetWidth;
-    myVar.mon2base = myVar.mon2y + myVar.mon2h;
-    myVar.mon2rend = myVar.mon2x + myVar.mon2w;
+    myVar.mon2x = getLeftof(myVar.monster2);
+    myVar.mon2y = getTop(myVar.monster2);
+    myVar.mon2h = getHeight(myVar.monster2);
+    myVar.mon2w = getWidth(myVar.monster2);
+    myVar.mon2base = getBase(myVar.mon2y, myVar.mon2h);
+    myVar.mon2rend = getRend(myVar.mon2x, myVar.mon2w);
     
-    myVar.mon3x = myVar.monster3.offsetLeft;
-    myVar.mon3y = myVar.monster3.offsetTop;
-    myVar.mon3h = myVar.monster3.offsetHeight;
-    myVar.mon3w = myVar.monster3.offsetWidth;
-    myVar.mon3base = myVar.mon3y + myVar.mon3h;
-    myVar.mon3rend = myVar.mon3x + myVar.mon3w;
+    myVar.mon3x = getLeftof(myVar.monster3);
+    myVar.mon3y = getTop(myVar.monster3);
+    myVar.mon3h = getHeight(myVar.monster3);
+    myVar.mon3w = getWidth(myVar.monster3);
+    myVar.mon3base = getBase(myVar.mon3y, myVar.mon3h);
+    myVar.mon3rend = getRend(myVar.mon3x, myVar.mon3w);
 
     myVar.objImage.style.position = "relative";
     myVar.objImage.style.left = "0px";
     myVar.objImage.style.top = "660px";
 
-    myVar.movMush.style.left = "400px";
-    myVar.movMush.style.top = "450px";
-    
     setValue();
+
+    setPosition(myVar.movMush, "20%", "55%");
+
     myVar.basey = myVar.baseval.offsetTop;
     myVar.baseh = myVar.baseval.offsetHeight;
     myVar.base = screen.height - (myVar.basey + myVar.baseh);
     
-    var mov = parseInt(myVar.movMush.style.left.substring( 0, 3));
-        var movlimit = mov + 100;
-        var idclose = setInterval(slide,100);
+    movMonster(myVar.movMush);
+}
+function getMove(divId){
+   return parseInt(divId.style.left.substring( 0, 2))
+}
+
+function movMonster(divId){
+    var divRef = divId;
+    var initPos = getMove(divId);
+    var mov = getMove(divId);
+        var movlimit = mov + 10;
+        var idclose = setInterval(slide,500);
         function slide() {
             if(mov >=  movlimit){
-               while(mov != 200){ 
-                    myVar.movMush.style.left=parseInt(myVar.movMush.style.left) - 2 + "px";
-                    mov = mov - 5;
+               while(mov != initPos){ 
+                    divRef.style.left=parseInt(divRef.style.left) - 1 + "%";
+                    mov = mov - 1;
                 }
             }
             else{
-            myVar.movMush.style.left=parseInt(myVar.movMush.style.left) + 2 + "px";
-            mov = parseInt(myVar.movMush.style.left.substring( 0, 3));
+                divRef.style.left=parseInt(divRef.style.left) + 1 + "%";
+            mov = parseInt(divRef.style.left.substring( 0, 2));
             getMushMario();
             }
         setValue();
         forthMon();
-    }     
+    }
+}
+
+function setPosition(monster, leftpx, toppx){
+    monster.style.left = leftpx;
+    monster.style.top = toppx;
+}
+
+function getLeftof(divId){
+    return divId.offsetLeft;
+}
+
+function getTop(divId){
+    return divId.offsetTop;
+}
+
+function getHeight(divId){
+    return divId.offsetHeight;
+}
+
+function getWidth(divId){
+    return divId.offsetWidth;
+}
+
+function getBase(top,height){
+    return top + height;
+}
+
+function getRend(left,width){
+    return left + width;
 }
 
 function getMushMario(){
